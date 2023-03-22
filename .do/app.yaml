@@ -35,23 +35,3 @@ services:
   source_dir: api
   routes:
   - path: /api
-
-- name: webhook
-  environment_slug: go
-  github:
-    repo: digitalocean/sample-monorepo
-    branch: main
-    deploy_on_push: true
-  source_dir: webhook
-  routes:
-  - path: /webhook
-
-workers:
-- name: worker
-  github:
-    repo: digitalocean/sample-monorepo
-    branch: main
-    deploy_on_push: true
-  source_dir: worker
-  dockerfile_path: worker/Dockerfile
-  run_command: sh -c "cat ./ok && sleep infinity"
