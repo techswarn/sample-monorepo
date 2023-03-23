@@ -11,7 +11,7 @@ static_sites:
   index_document: hello.html
   error_document: error.html
   routes:
-  - path: /
+  - path: /frontend
 
 - name: landing
   github:
