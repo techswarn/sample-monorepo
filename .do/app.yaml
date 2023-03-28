@@ -1,37 +1,38 @@
 name: sample-monorepo
-
-static_sites:
-- name: frontend
-  environment_slug: html
-  github:
-    repo: techswarn/sample-monorepo
-    branch: main
-    deploy_on_push: true
-  source_dir: frontend
-  index_document: hello.html
-  error_document: error.html
-  routes:
-  - path: /frontend
-
-- name: landing
-  github:
-    repo: techswarn/sample-monorepo
-    branch: main
-    deploy_on_push: true
-  source_dir: landing
-  dockerfile_path: landing/Dockerfile
-  output_dir: /app
-  error_document: error.html
-  routes:
-  - path: /landing
-
+region: blr
 services:
-- name: api
-  environment_slug: go
+- environment_slug: go
   github:
-    repo: techswarn/sample-monorepo
     branch: main
     deploy_on_push: true
-  source_dir: api
+    repo: techswarn/sample-monorepo
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: api
   routes:
   - path: /api
+  source_dir: api
+static_sites:
+- environment_slug: html
+  error_document: error.html
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: techswarn/sample-monorepo
+  index_document: hello.html
+  name: frontend
+  routes:
+  - path: /frontend
+  source_dir: frontend
+- dockerfile_path: landing/Dockerfile
+  error_document: error.html
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: techswarn/sample-monorepo
+  name: landing
+  output_dir: /app
+  routes:
+  - path: /landing
+  source_dir: landing
