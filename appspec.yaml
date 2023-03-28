@@ -34,5 +34,5 @@ static_sites:
   name: landing
   output_dir: /app
   routes:
-  - path: /landing
+  - path: /landing-app
   source_dir: landing
