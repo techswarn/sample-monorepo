@@ -1,4 +1,4 @@
 FROM alpine
 ADD . /app/
-WORKDIR /app
+WORKDI /app
 RUN echo "howdy v1" >> index.html
