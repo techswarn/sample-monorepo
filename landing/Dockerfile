@@ -1,5 +1,5 @@
 FROM alpine
 ADD . /app/
 WORKDIR /app
-RUN echo "howdy v1" >> index.html
+RUN echo "howdy v2" >> index.html
 CMD ['kill']
